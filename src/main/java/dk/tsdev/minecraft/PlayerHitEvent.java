@@ -29,7 +29,7 @@ public class PlayerHitEvent implements Listener {
             Player player = (Player) event.getEntity();
             Entity damager = event.getDamager();
 
-            LukasPlugin plugin = (LukasPlugin) player.getServer().getPluginManager().getPlugin("LukasPlugin");
+            MyPlugin plugin = (MyPlugin) player.getServer().getPluginManager().getPlugin("MyPlugin");
 
             PlayerState playerState = plugin.getPlayerState(player);
 

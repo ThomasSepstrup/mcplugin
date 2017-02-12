@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
-import org.bukkit.plugin.Plugin;
 
 /**
  *
@@ -22,7 +21,7 @@ public class PlayerJoinEvent implements Listener {
     @EventHandler
     public void opPlayer(PlayerLoginEvent event) {
         
-        LukasPlugin plugin = (LukasPlugin)event.getPlayer().getServer().getPluginManager().getPlugin("LukasPlugin");
+        MyPlugin plugin = (MyPlugin)event.getPlayer().getServer().getPluginManager().getPlugin("MyPlugin");
         
         Player p = event.getPlayer();
         p.sendMessage(p.getDisplayName());

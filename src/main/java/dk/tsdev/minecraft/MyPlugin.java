@@ -19,14 +19,14 @@ import org.bukkit.plugin.java.JavaPlugin;
  *
  * @author Thomas
  */
-public class LukasPlugin extends JavaPlugin {
+public class MyPlugin extends JavaPlugin {
 
     private HashMap<String, PlayerState> stateMap;
 
     @Override
     public void onEnable() {
         super.onEnable();
-        Bukkit.getServer().getLogger().info("LukasPlugin enabled.");
+        Bukkit.getServer().getLogger().info("MyPlugin enabled.");
         getServer().getPluginManager().registerEvents(new PlayerHitEvent(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinEvent(), this);
         getServer().getPluginManager().registerEvents(new TargetPlayerEvent(), this);
@@ -38,7 +38,7 @@ public class LukasPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         super.onDisable();
-        Bukkit.getServer().getLogger().info("LukasPlugin disabled.");
+        Bukkit.getServer().getLogger().info("MyPlugin disabled.");
     }
 
     public PlayerState getPlayerState(Player player) {

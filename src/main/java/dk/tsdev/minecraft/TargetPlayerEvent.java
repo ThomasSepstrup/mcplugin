@@ -23,7 +23,7 @@ public class TargetPlayerEvent implements Listener {
 
         if (event.getTarget() instanceof Player) {
             Player p = (Player) event.getTarget();
-            LukasPlugin plugin = (LukasPlugin) p.getServer().getPluginManager().getPlugin("LukasPlugin");
+            MyPlugin plugin = (MyPlugin) p.getServer().getPluginManager().getPlugin("MyPlugin");
             PlayerState playerState = plugin.getPlayerState(p);
             if (playerState.isSafeOn()) {
                 if (event.getEntity() != null && (event.getEntity() instanceof Damageable)) {

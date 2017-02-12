@@ -1,8 +1,8 @@
-name: LukasPlugin
+name: MyPlugin
 version: 2.1.0
-main: dk.tsdev.minecraft.LukasPlugin
+main: dk.tsdev.minecraft.MyPlugin
 author: MuabDib69
-description: Misc. plugin.
+description: My first plugin.
 
 commands:
     gpsset:
