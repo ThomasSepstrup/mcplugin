@@ -3,3 +3,4 @@ build/
 .gradle/
 mcplugin.ipr
 mcplugin.iws
+mcplugin.iml
