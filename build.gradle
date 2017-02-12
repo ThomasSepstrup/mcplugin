@@ -1,0 +1,18 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+
+dependencies {
+    compile files('./libs/craftbukkit-1.11.2.jar')
+}
+
+jar {
+    from "src/plugin.yml"
+}
+
+task deployPlugin(type: Copy) {
+    from('build/libs') {
+        include '*.jar'
+    }
+    into 'D:\\games\\CraftBukkit-1.11.2\\plugins\\'
+}
