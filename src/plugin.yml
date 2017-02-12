@@ -1,0 +1,34 @@
+name: LukasPlugin
+version: 2.1.0
+main: dk.tsdev.minecraft.LukasPlugin
+author: MuabDib69
+description: Misc. plugin.
+
+commands:
+    gpsset:
+        usage: /<command>
+        description: Set your compass pointing towards this location.
+        
+    gpstp:
+        usage: /<command>
+        description: Teleport to compass location.
+        
+    setblast:
+        usage: /<command>
+        description: Select place for detonation.
+        
+    blastaway:
+        usage: /<command>
+        description: Detonate!
+        
+    safeon:
+        usage: /<command>
+        description: Safe on. Enemies blow up, when they target you.
+        
+    safeoff:
+        usage: /<command>
+        description: Safe off.
+        
+    kit:
+        usage: /<command>
+        description: Start kit.
