@@ -7,6 +7,7 @@ dependencies {
 }
 
 jar {
+    archiveName "MyPlugin.jar"
     from "src/plugin.yml"
 }
 
