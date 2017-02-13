@@ -13,10 +13,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- *
- * @author Thomas
- */
 public class MyPlugin extends JavaPlugin {
 
     private HashMap<String, PlayerState> stateMap;
@@ -82,7 +78,7 @@ public class MyPlugin extends JavaPlugin {
                 if (args.length == 1) {
 
                     float force = Float.parseFloat(args[0]);
-                    
+
                     if (playerState.getDetonateLocation() != null) {
                         player.getWorld().createExplosion(playerState.getDetonateLocation(), force, false);
                         player.sendMessage("Kabooom!!");
@@ -90,7 +86,7 @@ public class MyPlugin extends JavaPlugin {
                         player.sendMessage("Set your blast point!");
                     }
                 } else {
-                    player.sendMessage("usage: /setblast <force>");
+                    player.sendMessage("usage: /blastaway <force>");
                 }
             } else if (command.getName().equalsIgnoreCase("setblast")) {
                 playerState.setDetonateLocation(player.getLocation());
