@@ -8,6 +8,7 @@ package dk.tsdev.minecraft;
 
 import java.io.Serializable;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 /**
  *
@@ -15,30 +16,24 @@ import org.bukkit.Location;
  */
 public class PlayerState implements Serializable {
 
-    private String name;
+    private Player player;
     private boolean safeOn;
     private Location compassLocation;
     private Location detonateLocation;
-    
-    
-    public PlayerState(String name) {
-        
-        this.name = name;
+
+    public PlayerState(Player player) {
+        this.player = player;
         safeOn = false;
         compassLocation = null;
         detonateLocation = null;
-        
     }
 
-   
-    
-    
-    public String getName() {
-        return name;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public boolean isSafeOn() {

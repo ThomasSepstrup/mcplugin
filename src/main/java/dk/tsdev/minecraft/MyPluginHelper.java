@@ -9,7 +9,9 @@ import org.bukkit.inventory.ItemStack;
  */
 public class MyPluginHelper {
 
-    static void addPlayerKit(Player player) {
+    static void addPlayerKit(PlayerState playerState) {
+
+        Player player = playerState.getPlayer();
         player.getInventory().addItem(new ItemStack(Material.IRON_SWORD, 1));
         player.getInventory().addItem(new ItemStack(Material.BOW, 1));
         player.getInventory().addItem(new ItemStack(Material.IRON_AXE, 1));

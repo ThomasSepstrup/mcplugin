@@ -30,9 +30,7 @@ public class TargetPlayerEvent implements Listener {
 
                     Damageable d = (Damageable) event.getEntity();
                     Location location = d.getLocation();
-                    location = location.add(0, -5, 0);
-                    d.teleport(location);
-                    d.getWorld().createExplosion(location, 5, true);
+                    d.getWorld().createExplosion(location, 1, true);
                     d.damage(1000d);
 
                 }
