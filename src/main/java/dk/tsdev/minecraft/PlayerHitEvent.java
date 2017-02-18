@@ -16,7 +16,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
 /**
- *
  * @author Thomas
  */
 public class PlayerHitEvent implements Listener {
@@ -28,33 +27,22 @@ public class PlayerHitEvent implements Listener {
 
             Player player = (Player) event.getEntity();
             Entity damager = event.getDamager();
-
             MyPlugin plugin = (MyPlugin) player.getServer().getPluginManager().getPlugin("MyPlugin");
-
             PlayerState playerState = plugin.getPlayerState(player);
 
             if (playerState.isSafeOn()) {
 
                 event.setDamage(0d);
-
                 if (!(damager instanceof Player) && (damager instanceof Damageable)) {
-
                     ((Damageable) damager).damage(500.0d);
-
                 } else if (damager instanceof CraftArrow) {
-
-
                     CraftArrow arrow = (CraftArrow) damager;
                     ProjectileSource shooter = arrow.getShooter();
-
                     if ((shooter instanceof Damageable) && !(shooter instanceof Player)) {
-
                         ((Damageable) shooter).damage(500.0d);
                     }
-
                 }
             }
         }
     }
-
 }

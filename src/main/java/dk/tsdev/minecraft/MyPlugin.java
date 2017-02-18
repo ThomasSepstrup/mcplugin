@@ -5,13 +5,13 @@
  */
 package dk.tsdev.minecraft;
 
-import java.util.HashMap;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
 
 public class MyPlugin extends JavaPlugin {
 
@@ -26,7 +26,6 @@ public class MyPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TargetPlayerEvent(), this);
         getServer().getPluginManager().registerEvents(new BlockHitEvent(), this);
         stateMap = new HashMap<>();
-
     }
 
     @Override
@@ -35,78 +34,60 @@ public class MyPlugin extends JavaPlugin {
         Bukkit.getServer().getLogger().info("MyPlugin disabled.");
     }
 
-    public PlayerState getPlayerState(Player player) {
-
-        PlayerState playerState = stateMap.get(player.getDisplayName());
-
-        if (playerState == null) {
-            playerState = new PlayerState(player.getDisplayName());
-            stateMap.put(player.getDisplayName(), playerState);
-            Bukkit.getLogger().info("New PlayerState for: " + player.getDisplayName());
-        }
-
-        return playerState;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (sender instanceof Player) {
 
-            Player player = (Player) sender;
-            PlayerState playerState = getPlayerState(player);
+            PlayerState playerState = getPlayerState((Player) sender);
+            CommandHandler commandHandler = new CommandHandler();
 
-            if (command.getName().equalsIgnoreCase("gpsSet")) {
+            String commandText = command.getName().toLowerCase();
 
-                Location l = player.getLocation();
-                player.setCompassTarget(l);
-                playerState.setCompassLocation(l);
-
-                sender.sendMessage("Compas set to this location!");
-
-            } else if (command.getName().equalsIgnoreCase("gpsTP")) {
-
-                if (playerState.getCompassLocation() != null) {
-                    player.teleport(playerState.getCompassLocation());
-                    sender.sendMessage("Destination reached.");
-                } else {
-                    player.sendMessage("use gpsSet before gpsTP");
-                }
-
-            } else if (command.getName().equalsIgnoreCase("blastaway")) {
-
-                if (args.length == 1) {
-
-                    float force = Float.parseFloat(args[0]);
-
-                    if (playerState.getDetonateLocation() != null) {
-                        player.getWorld().createExplosion(playerState.getDetonateLocation(), force, false);
-                        player.sendMessage("Kabooom!!");
+            switch (commandText) {
+                case "gpsSet":
+                    commandHandler.handleGpsSet(playerState);
+                    break;
+                case "gpsTP":
+                    commandHandler.handleGpsTeleport(playerState);
+                    break;
+                case "blastaway":
+                    if (args.length == 1) {
+                        commandHandler.handleBlastAway(args[0], playerState);
                     } else {
-                        player.sendMessage("Set your blast point!");
+                        sender.sendMessage("usage: /blastaway <force>");
                     }
-                } else {
-                    player.sendMessage("usage: /blastaway <force>");
-                }
-            } else if (command.getName().equalsIgnoreCase("setblast")) {
-                playerState.setDetonateLocation(player.getLocation());
-                player.sendMessage("Location set. Get the hell out of here!!");
-            } else if (command.getName().equalsIgnoreCase("safeon")) {
-                playerState.setSafeOn(true);
-                player.sendMessage("Safety on!");
-            } else if (command.getName().equalsIgnoreCase("safeoff")) {
-                playerState.setSafeOn(false);
-                player.sendMessage("Safety off!");
-
-            } else if (command.getName().equalsIgnoreCase("kit")) {
-                MyPluginHelper.addPlayerKit(player);
+                    break;
+                case "setblast":
+                    commandHandler.handleSetBlast(playerState);
+                    break;
+                case "safeon":
+                    commandHandler.handleSafeOn(playerState);
+                    break;
+                case "safeoff":
+                    commandHandler.handleSafeOff(playerState);
+                    break;
+                case "kit":
+                    commandHandler.handleKit(playerState);
+                    break;
             }
 
         } else {
-            sender.sendMessage("This command cannot be used from the console.");
+            sender.sendMessage("Fool! This command cannot be used from the console.");
         }
 
         return true;
+    }
+
+    public PlayerState getPlayerState(Player player) {
+
+        PlayerState playerState = stateMap.get(player.getDisplayName());
+        if (playerState == null) {
+            playerState = new PlayerState(player);
+            stateMap.put(player.getDisplayName(), playerState);
+            Bukkit.getLogger().info("New PlayerState for: " + player.getDisplayName());
+        }
+        return playerState;
     }
 
 }

@@ -15,5 +15,9 @@ task deployPlugin(type: Copy) {
     from('build/libs') {
         include '*.jar'
     }
-    into 'D:\\games\\CraftBukkit-1.11.2\\plugins\\'
+    into 'C:\\work\\mcserver\\plugins\\'
+}
+
+deployPlugin.dependsOn {
+    tasks.findByName('build')
 }

