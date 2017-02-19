@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-package dk.tsdev.minecraft;
+package dk.tsdev.minecraft.eventhandler;
 
-import java.io.Serializable;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import java.io.Serializable;
+
 /**
- *
  * @author Thomas
  */
 public class PlayerState implements Serializable {
@@ -28,36 +28,32 @@ public class PlayerState implements Serializable {
         detonateLocation = null;
     }
 
-    public Player getPlayer() {
+    Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public boolean isSafeOn() {
+    boolean isSafeOn() {
         return safeOn;
     }
 
-    public void setSafeOn(boolean safeOn) {
+    void setSafeOn(boolean safeOn) {
         this.safeOn = safeOn;
     }
 
-    public Location getCompassLocation() {
+    Location getCompassLocation() {
         return compassLocation;
     }
 
-    public void setCompassLocation(Location compassLocation) {
+    void setCompassLocation(Location compassLocation) {
         this.compassLocation = compassLocation;
     }
 
-    public Location getDetonateLocation() {
+    Location getDetonateLocation() {
         return detonateLocation;
     }
 
-    public void setDetonateLocation(Location detonateLocation) {
+    void setDetonateLocation(Location detonateLocation) {
         this.detonateLocation = detonateLocation;
     }
-    
+
 }

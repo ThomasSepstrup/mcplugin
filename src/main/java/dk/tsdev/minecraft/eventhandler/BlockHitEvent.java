@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.tsdev.minecraft;
+package dk.tsdev.minecraft.eventhandler;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

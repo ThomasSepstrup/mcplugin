@@ -1,4 +1,4 @@
-package dk.tsdev.minecraft;
+package dk.tsdev.minecraft.eventhandler;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

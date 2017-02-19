@@ -5,6 +5,7 @@
  */
 package dk.tsdev.minecraft;
 
+import dk.tsdev.minecraft.eventhandler.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -45,10 +46,10 @@ public class MyPlugin extends JavaPlugin {
             String commandText = command.getName().toLowerCase();
 
             switch (commandText) {
-                case "gpsSet":
+                case "gpsset":
                     commandHandler.handleGpsSet(playerState);
                     break;
-                case "gpsTP":
+                case "gpstp":
                     commandHandler.handleGpsTeleport(playerState);
                     break;
                 case "blastaway":

