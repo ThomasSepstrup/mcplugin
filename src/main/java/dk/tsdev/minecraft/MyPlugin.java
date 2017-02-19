@@ -71,6 +71,9 @@ public class MyPlugin extends JavaPlugin {
                 case "kit":
                     commandHandler.handleKit(playerState);
                     break;
+                case "cave":
+                    commandHandler.handleCaveSearch(playerState);
+                    break;
             }
 
         } else {

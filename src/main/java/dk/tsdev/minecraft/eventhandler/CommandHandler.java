@@ -59,4 +59,9 @@ public class CommandHandler {
     }
 
 
+    public void handleCaveSearch(PlayerState playerState) {
+        MyPluginHelper.caveSearch(playerState);
+    }
+
+
 }
