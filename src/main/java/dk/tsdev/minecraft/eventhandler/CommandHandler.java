@@ -7,9 +7,9 @@ public class CommandHandler {
 
     public void handleGpsSet(PlayerState playerState) {
         Player player = playerState.getPlayer();
-        Location l = player.getLocation();
-        player.setCompassTarget(l);
-        playerState.setCompassLocation(l);
+        Location location = player.getLocation();
+        player.setCompassTarget(location);
+        playerState.setCompassLocation(location);
         player.sendMessage("Compas set to this location!");
     }
 

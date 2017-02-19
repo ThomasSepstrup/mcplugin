@@ -6,41 +6,28 @@
 package dk.tsdev.minecraft.eventhandler;
 
 
-import dk.tsdev.minecraft.MyPlugin;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftArrow;
-import org.bukkit.entity.Damageable;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.event.entity.ProjectileHitEvent;
 
 
 public class PlayerHitEvent implements Listener {
 
     @EventHandler
-    public void instantKill(EntityDamageByEntityEvent event) {
-
-        if (event.getEntity() instanceof Player) {
-
-            Player player = (Player) event.getEntity();
-            Entity damager = event.getDamager();
-            MyPlugin plugin = (MyPlugin) player.getServer().getPluginManager().getPlugin("MyPlugin");
-            PlayerState playerState = plugin.getPlayerState(player);
-
-            if (playerState.isSafeOn()) {
-
-                event.setDamage(0d);
-                if (!(damager instanceof Player) && (damager instanceof Damageable)) {
-                    ((Damageable) damager).damage(500.0d);
-                } else if (damager instanceof CraftArrow) {
-                    CraftArrow arrow = (CraftArrow) damager;
-                    ProjectileSource shooter = arrow.getShooter();
-                    if ((shooter instanceof Damageable) && !(shooter instanceof Player)) {
-                        ((Damageable) shooter).damage(500.0d);
-                    }
+    public void arrowHit(ProjectileHitEvent event) {
+        if (event.getEntity() instanceof Arrow) {
+            if (event.getHitEntity() != null) {
+                if (event.getHitEntity().getType() != EntityType.PLAYER) {
+                    Location location = event.getHitEntity().getLocation();
+                    location.getWorld().createExplosion(location, 1, true);
                 }
+            } else if (event.getHitBlock() != null) {
+                Location location = event.getHitBlock().getLocation();
+                location.getWorld().createExplosion(location, 1, true);
+
             }
         }
     }
