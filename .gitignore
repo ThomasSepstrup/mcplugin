@@ -1,6 +1,9 @@
 .idea/
 build/
 .gradle/
+gradle/
+gradlew
+gradlew.bat
 mcplugin.ipr
 mcplugin.iws
 mcplugin.iml
